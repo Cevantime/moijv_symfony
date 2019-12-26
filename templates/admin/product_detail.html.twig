@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Détail du produit {{ product.name }}</h1>
+
+    <h2>Description : </h2>
+    <p>
+        {{ product.description | nl2br }}
+    </p>
+
+    <h2>Tags : </h2>
+
+    <p>
+        {% for tag in product.tags %}
+            #{{ tag.name }}
+        {% endfor %}
+    </p>
+    <a
+            href="{{ path("user_detail", {id : product.user.id }) }}"
+            title="Revenir au détail de l'utilisateur {{ product.user.firstname }} {{ product.user.lastname }}">
+        Retour au détail de l'utilisateur {{ product.user.firstname }} {{ product.user.lastname }}
+    </a>
+{% endblock %}
